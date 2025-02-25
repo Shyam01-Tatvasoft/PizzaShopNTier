@@ -1,0 +1,15 @@
+D:\PizzaShopNTire\PizzaShop.Service\bin\Debug\net7.0\PizzaShop.Service.deps.json
+D:\PizzaShopNTire\PizzaShop.Service\bin\Debug\net7.0\PizzaShop.Service.dll
+D:\PizzaShopNTire\PizzaShop.Service\bin\Debug\net7.0\PizzaShop.Service.pdb
+D:\PizzaShopNTire\PizzaShop.Service\bin\Debug\net7.0\PizzaShop.DataAccess.dll
+D:\PizzaShopNTire\PizzaShop.Service\bin\Debug\net7.0\PizzaShop.DataAccess.pdb
+D:\PizzaShopNTire\PizzaShop.Service\obj\Debug\net7.0\PizzaShop.Service.csproj.AssemblyReference.cache
+D:\PizzaShopNTire\PizzaShop.Service\obj\Debug\net7.0\PizzaShop.Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\PizzaShopNTire\PizzaShop.Service\obj\Debug\net7.0\PizzaShop.Service.AssemblyInfoInputs.cache
+D:\PizzaShopNTire\PizzaShop.Service\obj\Debug\net7.0\PizzaShop.Service.AssemblyInfo.cs
+D:\PizzaShopNTire\PizzaShop.Service\obj\Debug\net7.0\PizzaShop.Service.csproj.CoreCompileInputs.cache
+D:\PizzaShopNTire\PizzaShop.Service\obj\Debug\net7.0\PizzaShop.Service.csproj.CopyComplete
+D:\PizzaShopNTire\PizzaShop.Service\obj\Debug\net7.0\PizzaShop.Service.dll
+D:\PizzaShopNTire\PizzaShop.Service\obj\Debug\net7.0\refint\PizzaShop.Service.dll
+D:\PizzaShopNTire\PizzaShop.Service\obj\Debug\net7.0\PizzaShop.Service.pdb
+D:\PizzaShopNTire\PizzaShop.Service\obj\Debug\net7.0\ref\PizzaShop.Service.dll

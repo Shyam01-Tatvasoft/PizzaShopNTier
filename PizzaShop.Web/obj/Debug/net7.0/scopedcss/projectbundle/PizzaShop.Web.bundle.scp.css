@@ -1,0 +1,124 @@
+/* _content/PizzaShop.Web/Views/Shared/_Layout.cshtml.rz.scp.css */
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+/* Sidebar */
+#sidebar[b-7a5thk4fru] {
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+#sidebar ul[b-7a5thk4fru] {
+  /* margin-top: 40px; */
+  background-color: white;
+}
+
+#sidebar ul a[b-7a5thk4fru] {
+  text-decoration: none;
+  color: gray;
+  font-weight: 500;
+}
+
+#sidebar ul a:hover[b-7a5thk4fru] {
+  background-color: rgba(211, 211, 211, 0.384);
+  color: var(--textBlue);
+}
+#sidebar li[b-7a5thk4fru] {
+  list-style-type: none;
+  /* margin: 10px 0px 10px 0px; */
+  height: 43px;
+  border-radius: 5px;
+  text-align: left;
+  display: flex;
+  position: relative;
+  padding-left: 10%;
+  align-items: center;
+  font-size: medium;
+}
+.sidebar-header[b-7a5thk4fru] {
+  background-color: white;
+  z-index: 2;
+}
+#sidebar-cancel-btn[b-7a5thk4fru] {
+  display: none;
+}
+
+#sidebar #pizzashop-logo[b-7a5thk4fru] {
+  width: 60px;
+  height: 50px;
+}
+
+/* Navbar */
+.navbar[b-7a5thk4fru] {
+  height: 50px;
+  background-color: #006098;
+}
+#menu-icon[b-7a5thk4fru] {
+  display: none;
+}
+
+/* #sidebar {
+  z-index: 2000;
+} */
+
+#alert-icon[b-7a5thk4fru] {
+  width: 5px;
+  height: 5px;
+}
+
+@media (max-width: 768px) {
+  .sidebar[b-7a5thk4fru] {
+    position: fixed;
+    transform: translateX(-100%);
+  }
+
+  .sidebar.visible[b-7a5thk4fru] {
+    background-color: aqua;
+    transform: translateX(0);
+  }
+
+  /* #login-form-section {
+    background-image: url(../images/pizzashop-bg-blure.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+  } */
+
+  .main-container[b-7a5thk4fru] {
+    height: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* #login-form-section {
+    width: 100%;
+    background-image: url(../images/pizzashop-bg-blure.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+  }
+
+  #login-page .login-img{
+    display: none !important;
+  } */
+
+  /* .offcanvas-lg.offcanvas-start {
+    min-width: 230px !important;
+  }
+  .main-section{
+    width: 100% !important;
+  } */
+}
+
+@media (max-width: 992px) {
+  .offcanvas-lg.offcanvas-start[b-7a5thk4fru] {
+    width: 230px;
+  }
+  #menu-icon[b-7a5thk4fru] {
+    display: block !important;
+  }
+  #sidebar-cancel-btn[b-7a5thk4fru] {
+    display: block;
+  }
+}

@@ -1,0 +1,123 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+/* Sidebar */
+#sidebar {
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+#sidebar ul {
+  /* margin-top: 40px; */
+  background-color: white;
+}
+
+#sidebar ul a {
+  text-decoration: none;
+  color: gray;
+  font-weight: 500;
+}
+
+#sidebar ul a:hover {
+  background-color: rgba(211, 211, 211, 0.384);
+  color: var(--textBlue);
+}
+#sidebar li {
+  list-style-type: none;
+  /* margin: 10px 0px 10px 0px; */
+  height: 43px;
+  border-radius: 5px;
+  text-align: left;
+  display: flex;
+  position: relative;
+  padding-left: 10%;
+  align-items: center;
+  font-size: medium;
+}
+.sidebar-header {
+  background-color: white;
+  z-index: 2;
+}
+#sidebar-cancel-btn {
+  display: none;
+}
+
+#sidebar #pizzashop-logo {
+  width: 60px;
+  height: 50px;
+}
+
+/* Navbar */
+.navbar {
+  height: 50px;
+  background-color: #006098;
+}
+#menu-icon {
+  display: none;
+}
+
+/* #sidebar {
+  z-index: 2000;
+} */
+
+#alert-icon {
+  width: 5px;
+  height: 5px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    transform: translateX(-100%);
+  }
+
+  .sidebar.visible {
+    background-color: aqua;
+    transform: translateX(0);
+  }
+
+  /* #login-form-section {
+    background-image: url(../images/pizzashop-bg-blure.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+  } */
+
+  .main-container {
+    height: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  /* #login-form-section {
+    width: 100%;
+    background-image: url(../images/pizzashop-bg-blure.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+  }
+
+  #login-page .login-img{
+    display: none !important;
+  } */
+
+  /* .offcanvas-lg.offcanvas-start {
+    min-width: 230px !important;
+  }
+  .main-section{
+    width: 100% !important;
+  } */
+}
+
+@media (max-width: 992px) {
+  .offcanvas-lg.offcanvas-start {
+    width: 230px;
+  }
+  #menu-icon {
+    display: block !important;
+  }
+  #sidebar-cancel-btn {
+    display: block;
+  }
+}

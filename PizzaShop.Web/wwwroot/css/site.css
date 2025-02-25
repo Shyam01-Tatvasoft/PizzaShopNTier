@@ -1,0 +1,74 @@
+:root{
+  --textBlue: #006098;
+}
+
+/* Login Page */
+#login-page {
+  height: 100vh;
+  width: 100%;
+}
+
+#login-img {
+  object-fit: cover;
+}
+
+#pizzashop_logo {
+  width: 60px;
+  height: 50px;
+}
+
+.form-input-div {
+  position: relative;
+}
+
+.form-input-icon {
+  position: absolute;
+  right: 10px;
+  top: 22%;
+}
+
+#alert-icon{
+  width: 40px;
+  height: 40px;
+}
+
+/* common Css */
+.textBlue{
+  color: var(--textBlue) !important;
+}
+
+@media (max-width: 768px) {
+  #login-form-section {
+    background-image: url(../images/pizzashop-bg-blure.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+  }
+  .main-container {
+    height: 100%;
+  }
+  .loginForm{
+    width: 100% !important;
+  }
+}
+.user-icon {
+  width: 30px;
+  height: 30px;
+}
+@media (max-width: 1024px) {
+  #login-form-section {
+    width: 100%;
+    background-image: url(../images/pizzashop-bg-blure.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+  }
+
+  #login-page .login-img {
+    display: none !important;
+  }
+
+  .loginForm{
+    width: 70% ;
+  }
+}

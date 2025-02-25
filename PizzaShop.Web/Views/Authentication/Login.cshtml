@@ -1,0 +1,65 @@
+@{
+  ViewData["Title"] = "Login";
+  Layout = "_Authlayout";
+}
+@model PizzaShop.ViewModels.LoginViewModel;
+
+<div class="col-md-9 justify-content-center">
+  <div class="row mb-5">
+    <div class="d-flex align-items-center justify-content-center p-0">
+      <img src="~/images/logos/pizzashop_logo.png" alt="pizzashop_logo" id="pizzashop_logo" />
+      <h1 class="text-primary">PIZZASHOP</h1>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center align-items-center">
+    <h5 class="text-center">Welcome,</h5>
+    <form asp-controller="Authentication" asp-action="Login" id="loginForm" method="post">
+      <div class="form-input-div mt-3">
+        <input type="text" placeholder="Email*" class="form-control p-2" name="Email" id="email" asp-for="Email" />
+        <span class="form-input-icon"><i class="fa-solid fa-user" style="color: gray"></i>
+        </span>
+      </div>
+      <span id="emailError" class="text-danger fs-6 mx-2 mb-3" asp-validation-for="Email"></span>
+      <div class="form-input-div mt-3">
+        <input type="password" placeholder="Password*" class="form-control p-2" name="Password" minlength="5"
+          asp-for="Password" id="Password" />
+        <span class="form-input-icon"><i class="fa-solid fa-eye" id="eye-icon" style="color: gray"></i>
+        </span>
+      </div>
+      <span id="passwordError" class="text-danger fs-6 mx-2 mb-3" asp-validation-for="Password"></span>
+      <div class="d-flex justify-content-between">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="flexCheckDefault" asp-for="RememberMe">
+          <label class="form-check-label" for="flexCheckDefault">
+            Remember me
+          </label>
+        </div>
+        <span id="ForgotPassword">
+          <a href="#">Forgot Password</a>
+        </span>
+      </div>
+      <div class="my-3">
+        <button class="btn btn-primary w-100" type="submit">Login</button>
+      </div>
+      <span class="text-danger">
+        @Html.ValidationSummary()
+      </span>
+      <span class="text-danger">
+        @ViewBag.Message
+      </span>
+    </form>
+  </div>
+</div>
+
+<script>
+  $("#ForgotPassword").click(function () {
+    let email = $("#email").val();
+    if (email) {
+      window.location.href = "/Authentication/ForgotPassword?email=" + email;
+    }
+    else {
+      alert("Please Enter Email")
+      window.location.href = "/";
+    }
+  })
+</script>
