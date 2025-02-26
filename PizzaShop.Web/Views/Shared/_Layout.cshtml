@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/PizzaShop.Web.styles.css" asp-append-version="true" />
+    <link rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -28,7 +29,7 @@
             data-bs-target="#sidebar" aria-controls="offcanvasWithBothOptions"></button>
         </div>
         <ul class="nav flex-column">
-          <a href="/Home/Index">
+          <a href="/Dashboard/Dashboard">
             <li class="nav-item">
               <i class="fa-solid fa-table-cells-large me-2"></i>Dashboard
             </li>
@@ -76,7 +77,7 @@
         <!-- navbar -->
         <nav class="navbar navbar-expanded-lg justify-content-end align-items-center navbar-light fixed-top"
           style="height: 50px;position:static;">
-          <img src="~/images/icons/menu-bar.svg" alt="toggle-btn" class="mx-2" id="menu-icon" data-bs-toggle="offcanvas"
+          <img src="~/images/icons/menu-bar.svg" alt="toggle-btn" class="mx-2 menuIcon" id="sidebarMenu" data-bs-toggle="offcanvas"
             data-bs-target="#sidebar" aria-controls="offcanvasWithBothOptions" />
           <div class="btn-group">
             <div class="btn-group dropstart">
@@ -94,11 +95,11 @@
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="/User/Profile"><i class="fa fa-user-circle me-2"
+                <li><a class="dropdown-item" href="/Profile/Profile"><i class="fa fa-user-circle me-2"
                       aria-hidden="true"></i>My Profile</a></li>
-                <li><a class="dropdown-item" href="/User/ChangePassword"><i class="fa fa-refresh me-2"
+                <li><a class="dropdown-item" href="/Profile/ChangePassword"><i class="fa fa-refresh me-2"
                       aria-hidden="true"></i>Change Password</a></li>
-                <li data-bs-toggle="modal" data-bs-target="#LogoutModel"><a class="dropdown-item"><i
+                <li data-bs-toggle="modal" data-bs-target="#LogoutModel" style="cursor: pointer;"><a class="dropdown-item"><i
                       class="fa fa-sign-out me-2" aria-hidden="true"></i>Logout</a></li>
               </ul>
             </div>
@@ -117,7 +118,7 @@
               </div>
               <div class="modal-footer d-flex justify-content-center border-0">
 
-                <a class="btn btn-primary" href="@Url.Action("Logout", "User")">Yes</a>
+                <a class="btn btn-primary" href="@Url.Action("Logout", "Authentication")">Yes</a>
                 <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">
                   No
                 </button>

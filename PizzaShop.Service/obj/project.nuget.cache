@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tqwh8d2MdEkpdkjymf0qz+ZLTHQ4gBjggiGQhkNNFmX7GqCC0neB/hbHqZ8WIs6atjmSbCB7p6dsz+0E95c30A==",
+  "dgSpecHash": "tUehX0iX9AXVwg2GtZqODWFS3ggmuUHN2vvp7/N9dtEOO0a8YY/xF6mYcrnMEq7Ft/FubIIvjEF76a2kd14avA==",
   "success": true,
-  "projectFilePath": "d:\\PizzaShopNTire\\PizzaShop.Service\\PizzaShop.Service.csproj",
+  "projectFilePath": "D:\\PizzaShopNTire\\PizzaShop.Service\\PizzaShop.Service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pci132\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.11\\microsoft.aspnetcore.authentication.jwtbearer.7.0.11.nupkg.sha512",
     "C:\\Users\\pci132\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\9.0.2\\microsoft.aspnetcore.cryptography.internal.9.0.2.nupkg.sha512",

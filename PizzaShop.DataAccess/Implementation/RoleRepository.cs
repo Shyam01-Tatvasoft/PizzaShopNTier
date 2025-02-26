@@ -11,7 +11,7 @@ public class RoleRepository: IRoleRepository
     {
         _context = context;
     }
-    public Role GetRoleById(int id)
+    public Role GetRoleById(int? id)
     {
         var role = _context.Roles.FirstOrDefault(r => r.Id == id);
         return role;

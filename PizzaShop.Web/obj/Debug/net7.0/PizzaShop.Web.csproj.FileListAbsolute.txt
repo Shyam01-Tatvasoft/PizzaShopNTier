@@ -64,3 +64,8 @@ D:\PizzaShopNTire\PizzaShop.Web\bin\Debug\net7.0\System.Formats.Asn1.dll
 D:\PizzaShopNTire\PizzaShop.Web\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
 D:\PizzaShopNTire\PizzaShop.Web\bin\Debug\net7.0\System.Security.Cryptography.Pkcs.dll
 D:\PizzaShopNTire\PizzaShop.Web\bin\Debug\net7.0\System.Security.Cryptography.Xml.dll
+d:\PizzaShopNTire\PizzaShop.Web\bin\Debug\net7.0\Humanizer.dll
+d:\PizzaShopNTire\PizzaShop.Web\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Design.dll
+d:\PizzaShopNTire\PizzaShop.Web\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
+d:\PizzaShopNTire\PizzaShop.Web\bin\Debug\net7.0\Mono.TextTemplating.dll
+d:\PizzaShopNTire\PizzaShop.Web\bin\Debug\net7.0\System.CodeDom.dll

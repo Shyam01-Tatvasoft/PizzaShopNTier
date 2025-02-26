@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using PizzaShop.Service.Interfaces;
 using PizzaShop.Web.Models;
 
 namespace PizzaShop.Web.Controllers;
@@ -7,10 +8,12 @@ namespace PizzaShop.Web.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly IJWTService _jwtService;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, IJWTService jwtService)
     {
         _logger = logger;
+        _jwtService = jwtService;
     }
 
     public IActionResult Index()
@@ -18,18 +21,10 @@ public class HomeController : Controller
         var AuthToken = Request.Cookies["AuthToken"];
         Console.WriteLine("AuthToken ", AuthToken);
         if (string.IsNullOrEmpty(AuthToken))
-        {
             return RedirectToAction("Login", "Authentication");
-        }
-        else
-        {
-            return View();
-        }
-        return View();
-    }
 
-    public IActionResult Privacy()
-    {
+        var userEmail = _jwtService.ValidateToken(AuthToken);
+        Console.WriteLine("user Email" + userEmail);
         return View();
     }
 

@@ -53,7 +53,7 @@ for details on configuring this project to bundle and minify static web assets. 
   height: 50px;
   background-color: #006098;
 }
-#menu-icon {
+#sidebarMenu{
   display: none;
 }
 
@@ -114,7 +114,7 @@ for details on configuring this project to bundle and minify static web assets. 
   .offcanvas-lg.offcanvas-start {
     width: 230px;
   }
-  #menu-icon {
+  #sidebarMenu {
     display: block !important;
   }
   #sidebar-cancel-btn {

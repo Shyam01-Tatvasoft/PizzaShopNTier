@@ -17,4 +17,12 @@ public class AccountRepository: IAccountRepository
         var account = _context.Accounts.FirstOrDefault(a => a.Email == email);
         return account;
     }
+
+    public Account UpdatePassword(string email,string password)
+    {
+        var account = _context.Accounts.FirstOrDefault(a => a.Email == email);
+        account.Password = password;
+        _context.SaveChanges();
+        return  account;
+    }
 }

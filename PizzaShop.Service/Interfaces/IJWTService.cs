@@ -5,5 +5,6 @@ namespace PizzaShop.Service.Interfaces;
 
 public interface IJWTService
 {
-    public string GenerateToken(string email, string role);
+    public string GenerateToken(string email, int? role);
+    public string ValidateToken(string token);
 }

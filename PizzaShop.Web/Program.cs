@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Authentication;
 using PizzaShop.DataAccess.Interfaces;
 using PizzaShop.DataAccess.Implementation;
 using PizzaShop.Service.Interfaces;
-using PizzaShop.Service.Services;
+using PizzaShop.Service.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,11 +15,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 var connection = builder.Configuration.GetConnectionString("PizzaShopDbConnection");
 builder.Services.AddDbContext<PizzashopContext>(options => options.UseNpgsql(connection));
-builder.Services.AddScoped<IAuthenticationServices, PizzaShop.Service.Services.AuthenticationService>();
+
+builder.Services.AddScoped<IAuthenticationServices, PizzaShop.Service.Implementation.AuthenticationService>();
 builder.Services.AddScoped<IJWTService, JWTService>();
-builder.Services.AddScoped<IAccountRepository,AccountRepository>();
-builder.Services.AddScoped<IUserRepository,UserRepository>();
-builder.Services.AddScoped<IRoleRepository,RoleRepository>();
+builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.AddScoped<IAddressService, AddressService>();
+builder.Services.AddScoped<IProfileService, ProfileService>();
+builder.Services.AddScoped<ICityRepository, CityRepository>();
+builder.Services.AddScoped<ICountryRepository, CountryRepository>();
+builder.Services.AddScoped<IStateRepository, StateRepository>();
 
 // JWT Configuration
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -59,6 +65,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Dashboard}/{action=Dashboard}/{id?}");
 
 app.Run();

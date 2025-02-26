@@ -27,7 +27,9 @@ public class ProfileViewModel
 
     [Required(ErrorMessage = "Address is required")]
     public string Address { get; set; } = null!;
-    
+
     [Required(ErrorMessage = "ZipCode is required")]
     public string ZipCode { get; set; } = null!;
+
+    public string? RoleId { get; set; }
 }

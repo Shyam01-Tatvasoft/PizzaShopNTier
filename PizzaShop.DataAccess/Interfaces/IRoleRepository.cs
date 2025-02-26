@@ -4,6 +4,6 @@ namespace PizzaShop.DataAccess.Interfaces;
 
 public interface IRoleRepository
 {
-    public Role GetRoleById(int id);
+    public Role GetRoleById(int? id);
 
 }
