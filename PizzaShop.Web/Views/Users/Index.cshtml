@@ -1,0 +1,189 @@
+@{
+    ViewData["Title"] = "Index";
+    var count = ViewBag.Count;
+    var PageIndex = ViewBag.pageIndex;
+    var pageSize = ViewBag.pageSize;
+    var TotalPage = ViewBag.TotalPage;
+    var searchString = ViewBag.SearchString as string;
+}
+
+@model List<PizzaShop.ViewModels.UsersViewModel>;
+
+<div class="">
+    <!-- User header -->
+    <div class="row align-items-center d-flex flex-wrap">
+        <h1 class="col-2 textBlue">Users</h1>
+        <div class="col-10 d-flex justify-content-end">
+            <form method="get">
+                <div class="form-input-div my-3 me-3">
+                    <input type="text" placeholder="Search" class="form-control p-2 d-none d-sm-block"
+                        name="searchString" value="@searchString" />
+                    <button type="submit" class="form-input-icon bg-transparent border-0">
+                        <i class="fa-solid fa-search" id="eye-icon"
+                                style="color: gray"></i>
+                        
+                    </button>
+                </div>
+            </form>
+            <button type="button" class="btn btn-primary my-3">
+                <a href="/Users/CreateUser" style="text-decoration: none; color: white">+ Add User</a>
+            </button>
+        </div>
+    </div>
+
+    <!-- Table -->
+    <section class="table-responsive shadow card">
+        <table class="table user-table mb-0">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        Name <i class="fa-solid fa-up-long"></i><i class="fa-solid fa-down-long"></i>
+                    </th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">
+                        Role
+                        <span><i class="fa-solid fa-up-long"></i><i class="fa-solid fa-down-long"></i></span>
+                    </th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-devider">
+                @foreach (var user in @Model)
+                {
+                    <tr>
+                        <th scope="row">
+                            <img src="~/images/Default_pfp.svg.png" alt="user-icon" class="user-icon" />
+                            @user.Firstname @user.Lastname
+                        </th>
+                        <td>@user.Email</td>
+                        <td>@user.Phone</td>
+                        <td>@user.Role</td>
+                        <td>
+                            @if(@user.Isactive == "Active")
+                            {   
+                                <p class="user-active">@user.Isactive  </p>
+                            }else{
+                                <p class="user-inactive">@user.Isactive  </p>
+                            }
+
+                        </td>
+                        <td>
+                            <a href="@Url.Action("UpdateUser","Users",new {id = user.Id})" style="text-decoration: none; color: black;"><i class="fa-solid fa-pen me-3"></i></a>
+                            <button type="button" class="btn" >
+                                @* <i class="fa-regular fa-trash-can"></i> *@
+                                <i class="fa fa-trash-can" data-userid="@user.Id" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                    style="cursor: pointer;"></i>
+                            </button>
+                            
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <form method="get" class="d-flex justify-content-end align-items-center my-2 me-2">
+            <p class="mb-0">Items Per page</p>
+            <select class="ms-3" aria-label="Default select example" name="pageSize" onchange="this.form.submit()">
+                @if (pageSize == 3)
+                {
+                    <option value="3" selected>3</option>
+                }
+                else
+                {
+                    <option value="3">3</option>
+                }
+                @if (pageSize == 5)
+                {
+                    <option value="5" selected>5</option>
+                }
+                else
+                {
+                    <option value="5">5</option>
+                }
+                @if (pageSize == 10)
+                {
+                    <option value="10" selected>10</option>
+                }
+                else
+                {
+                    <option value="10">10</option>
+                }
+
+            </select>
+            <p class="mb-0 ms-2 me-2">@PageIndex out of<span> @TotalPage</span></p>
+            @if (PageIndex > 1)
+            {
+                <a class="btn btn-outline-secondary me-1 px-3 py-0" name="PageIndex"
+                    href="?pageIndex=@(PageIndex - 1)&pageSize=@pageSize&searchString=@searchString">
+                    <i class="fa-solid fa-less-than fa-sm" style="height: 15px"></i>
+                </a>
+            }
+            else
+            {
+                <button class="btn btn-outline-secondary me-1 px-3 py-0" name="PageIndex" disabled>
+                    <i class="fa-solid fa-less-than fa-sm" style="height: 15px"></i>
+                </button>
+            }
+
+            @if (PageIndex < TotalPage)
+            {
+                <a class="btn btn-outline-secondary px-3 py-0" name="PageIndex"
+                    href="?pageIndex=@(PageIndex + 1)&pageSize=@pageSize&searchString=@searchString">
+                    <i class="fa-solid fa-greater-than fa-sm"></i>
+                </a>
+            }
+            else
+            {
+                <button class="btn btn-outline-secondary px-3 py-0" name="PageIndex" disabled>
+                    <i class="fa-solid fa-greater-than fa-sm"></i>
+                </button>
+            }
+
+        </form>
+    </section>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                        Delete Confirmation
+                    </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center p-1">
+                    <img src="~/images/toppng.com-warning-icon-2400x2400.png" alt="alert-icon" id="alert-icon" />
+                    <p class="fw-bold mb-0">
+                        Are you sure you want to delete this user?
+                    </p>
+                </div>
+                <form asp-action="DeleteUser" asp-controller="Users">
+                    <input type="hidden" name="id" id="deleteUserId" value="" />
+                
+                <div class="modal-footer d-flex justify-content-center border-0">
+                    <button type="submit" class="btn btn-primary">Yes</button>
+                    <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">
+                        No
+                    </button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var deleteModal = document.getElementById('deleteModal');
+        deleteModal.addEventListener('show.bs.modal', function (event) {
+
+            //retrieve the getElementById that triggered the modal-the delete icon
+            var triggerElement = event.relatedTarget; 
+            var userId = triggerElement.getAttribute('data-userid');
+            var inputField = document.getElementById('deleteUserId');
+            inputField.value = userId;
+        });
+    });
+</script>

@@ -32,6 +32,55 @@
   height: 40px;
 }
 
+
+
+/* User List */
+.user-table th {
+  /* color: gray; */
+}
+.user-table td {
+  /* color: gray; */
+}
+.user-active {
+  border-radius: 20px;
+  background-color: rgb(144, 219, 32);
+  text-align: center;
+  width: 70px;
+  color: white;
+}
+.user-inactive {
+  border-radius: 5px;
+  background-color: red;
+  text-align: center;
+  width: 70px;
+  color: white;
+}
+
+#aleret-icon {
+  width: 35px;
+  height: 35px;
+}
+.border-btn {
+  border: 2px dashed #006098;
+  background-color: white;
+  color: #006098;
+  border-radius: 10px;
+  padding: 7px;
+}
+
+.border-btn:hover {
+  border: 2px solid #006098;
+  background-color: #006098;
+  color: white;
+}
+
+.user-icon {
+  width: 30px;
+  height: 30px;
+}
+
+
+
 /* common Css */
 .textBlue{
   color: var(--textBlue) !important;

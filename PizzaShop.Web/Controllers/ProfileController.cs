@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using PizzaShop.DataAccess.Data;
 using PizzaShop.Service.Interfaces;
 using PizzaShop.ViewModels;
 
@@ -29,7 +30,7 @@ public class ProfileController : Controller
         var userProfile = _profileService.GetUserProfile(email);
 
         var AllCountries = _addressService.GetAllCountries();
-        
+
         // var AllStates = _addressService.GetAllStates();
         var AllStates = _addressService.GetAllStates(int.Parse(userProfile.Country));
         var AllCities = _addressService.GetAllCities(int.Parse(userProfile.State));
@@ -37,7 +38,7 @@ public class ProfileController : Controller
         ViewBag.AllCities = AllCities;
         ViewBag.AllStates = AllStates;
         ViewBag.Email = email;
-        ViewBag.Role = userProfile.RoleId;
+        ViewBag.Role = userProfile.Role;
         ViewBag.FirstName = userProfile.FirstName;
         ViewBag.LastName = userProfile.LastName;
         return View(userProfile);
@@ -53,7 +54,7 @@ public class ProfileController : Controller
             // access email from token
             // var userEmail = _jwtService.ValidateToken(AuthToken);
             var account = _authService.FindAccount(email);
-            var role = model.RoleId;
+            var role = model.Role;
             var FirstName = model.FirstName;
             var LastName = model.LastName;
 
@@ -69,27 +70,29 @@ public class ProfileController : Controller
                 ViewData["ProfileError"] = "Profile is not Updated pls Try Again";
                 return View();
             }
-
-
-
             ViewData["ProfileSuccessMessage"] = "Profile Updated SucessFully";
-
-            var AllCountries = _addressService.GetAllCountries();
-            var AllStates = _addressService.GetAllStates(int.Parse(model.Country));
-            var AllCities = _addressService.GetAllCities(int.Parse(model.State));
-            ViewBag.AllCountries = AllCountries;
-            ViewBag.AllCities = AllCities;
-            ViewBag.AllStates = AllStates;
-            ViewBag.Email = email;
-            ViewBag.Role = role;
-            ViewBag.FirstName = FirstName;
-            ViewBag.LastName = LastName;
-            return View();
+            return RedirectToAction("Dashboard", "Dashboard");
         }
         else
         {
             return View();
         }
+    }
+
+    [HttpGet]
+    public JsonResult GetStates(int countryId)
+    {
+        var states = _addressService.GetAllStates(countryId);
+        // ViewBag.AllStates = states;
+        return Json(states);
+    }
+
+    [HttpGet]
+    public JsonResult GetCities(int stateId)
+    {
+        var cities = _addressService.GetAllCities(stateId);
+        // ViewBag.AllCities = cities;
+        return Json(cities);
     }
 
     public ActionResult ChangePassword()
@@ -108,24 +111,24 @@ public class ProfileController : Controller
         if (ModelState.IsValid)
         {
             var email = Request.Cookies["email"];
-
-            // access email from token
-            // var userEmail = _jwtService.ValidateToken(AuthToken);
             var account = _authService.FindAccount(email);
             if (account == null)
             {
                 return RedirectToAction("Login", "Authentication");
             }
-            // if (account.Password == model.CurrentPassword){
-            //     account.Password = model.NewPassword;
-            //     await _context.SaveChangesAsync();
-            //     ViewData["ChangePassword"] = "Password Changed Successfully";
-            //     return View();
-            // }
-            // else{
-            //     ViewData["WrongPassword"] = "Wrong current Password Please Try Again !";
-            //     return View();
-            // }
+
+            string changePassword = _profileService.ChangePassword(model, email);
+            if (changePassword == "success")
+            {
+                ViewData["ChangePassword"] = "Password Changed Successfully";
+                return RedirectToAction("Dashboard", "Dashboard");
+            }
+            if (changePassword == "user not found")
+            { ViewData["WrongPassword"] = "Something Went Wrong Please Try Again !"; }
+            else if (changePassword == "Current Password Is Incorrect")
+            { ViewData["WrongPassword"] = "Incorrect Current Password"; }
+            else if (changePassword == "fail")
+            { ViewData["WrongPassword"] = "Something Went Wrong Please Try Again"; }
         }
         return View();
     }

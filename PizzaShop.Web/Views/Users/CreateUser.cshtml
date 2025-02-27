@@ -1,0 +1,270 @@
+@{
+    ViewData["Title"] = "Create User";
+}
+
+@model PizzaShop.ViewModels.CreateUserViewModel;
+
+
+<div class="col-12 content-bg">
+    <!-- Add User header -->
+    <div class="row align-items-center d-flex flex-wrap">
+        <h1 class=" col-6 col-md-3 font-weight-bold textBlue">Add New User</h1>
+        <div class="col-6 col-md-9 d-flex justify-content-end">
+            <a style="text-decoration: none; color: white" onclick="location.href='@Url.Action("Index", "Users")'">
+                <button type="button" class="btn btn-primary my-3">
+
+                    <i class="fa-solid fa-less-than"></i>
+                    Back
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <!-- Form -->
+    <div class="shadow card container-fluid p-3">
+        <form asp-action="CreateUser" asp-controller="Users" method="post" class="row needs-validation">
+            <div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="firstName" placeholder="firstName"
+                                asp-for="Firstname" />
+                            <label for="FirstName">First Name</label>
+                            <span asp-validation-for="Firstname" class="text-danger ms-2"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="lastName" placeholder="lastName"
+                                asp-for="Lastname" />
+                            <label for="LastName">Last Name</label>
+                            <span asp-validation-for="Lastname" class="text-danger ms-2"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="userName" placeholder="name"
+                                asp-for="Username" />
+                            <label for="Username">User Name</label>
+                            <span asp-validation-for="Username" class="text-danger ms-2"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="select-role" asp-for="Role">
+                                <option value="">Select Role</option>
+                                <option value="1">Admin</option>
+                                <option value="2">Account</option>
+                                <option value="3">chef</option>
+                            </select>
+                            <label for="Role">Role</label>
+                            <span asp-validation-for="Role" class="text-danger ms-2"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+                                asp-for="Email" />
+                            <label for="Email">Email address</label>
+                            <span asp-validation-for="Email" class="text-danger ms-2"></span>
+                        </div>
+                    </div>
+                    <div class="form-input-div col-md-6 ">
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="addUserPassword" placeholder="Password"
+                                asp-for="Password" />
+                            <label for="Password">Password</label>
+                            <span asp-validation-for="Password" class="text-danger ms-2"></span>
+                        </div>
+                        <span class="form-input-icon me-3"><i class="fa-solid fa-eye" id="addUserEyeBtn"
+                                style="color: gray"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row mb-3 d-flex justify-content-center px-3">
+                    <div class="col-md-12 border-btn d-flex p-0 justify-content-center">
+                        <label for="Profileimage" class="btn p-3 w-100 border-0 p-0">
+                            <img src="~/images/icons/cloud-upload-icon.svg" alt="upload-file-icon" />
+                            <p>Browse File</p>
+                        </label>
+                        <input id="files" type="file" class="input-file border-0 position-absolute invisible"
+                            asp-for="Profileimage" />
+                    </div>
+                    <span asp-validation-for="Profileimage" class="text-danger ms-2"></span>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="select-country" aria-label="Select Country"
+                                asp-for="Country">
+                                    <option value="">Select Option</option>
+                                @foreach (var country in ViewBag.AllCountries)
+                                {
+                                    <option value="@country.Id">
+                                        @country.Name
+                                    </option>
+                                }
+                            </select>
+                            <label for="select-country">Country</label>
+                            <span asp-validation-for="Country" class="text-danger ms-2"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="select-state" aria-label="Select State" asp-for="State">
+                                <option value="">Select Option</option>
+                                @foreach (var state in ViewBag.AllStates)
+                                {
+                                    <option value="@state.Id">
+                                        @state.Name
+                                    </option>
+                                }
+                            </select>
+                            <label for="select-state">State</label>
+                            <span asp-validation-for="State" class="text-danger ms-2"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="select-city" aria-label="Select City" asp-for="City">
+                                <option value="">Select Option</option>
+                                @foreach (var city in ViewBag.AllCities)
+                                {
+                                    <option value="@city.Id">
+                                        @city.Name
+                                    </option>
+                                }
+                            </select>
+                            <label for="select-city">City</label>
+                            <span asp-validation-for="City" class="text-danger ms-2"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="Zipcode" placeholder="Zipcode"
+                                asp-for="Zipcode" />
+                            <label for="Zipcode">Zipcode</label>
+                            <span asp-validation-for="Zipcode" class="text-danger ms-2"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="Address" placeholder="Address"
+                                asp-for="Address" />
+                            <label for="Address">Address</label>
+                            <span asp-validation-for="Address" class="text-danger ms-2"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="Phone" placeholder="Phone"
+                                asp-for="Phone" />
+                            <label for="Phone">Phone</label>
+                            <span asp-validation-for="Phone" class="text-danger ms-2"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+            <div>
+                <div class="mt-2">
+                    <button class="btn btn-primary" type="submit">
+                        Create User
+                    </button>
+                    <button class="btn btn-outline-primary"
+                        onclick="location.href='@Url.Action("Index", "Users")'" type="button">Cancel</button>
+                </div>
+                <span class="text-danger fw-bold mt-5">@ViewData["UserExistMsg"]</span>
+                <span class="text-success fw-bold mt-5">@ViewData["SuccessMessage"]</span>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var selectedCountry = $("#select-country").val();
+        if (selectedCountry) {
+            loadStates(selectedCountry);
+        }
+
+        $("#select-country").change(function () {
+            var countryID = $(this).val();
+            $("#select-state").html('<option value="">Select State</option>');
+            $("#select-city").html('<option value="">Select City</option>');
+
+            if (countryID) {
+                loadStates(countryID);
+            }
+        });
+
+        function loadStates(countryID) {
+            $.ajax({
+                url: '/Users/GetStates',
+                type: 'GET',
+                data: { countryID: countryID },
+                success: function (data) {
+
+                    $.each(data, function (i, state) {
+                        $("#select-state").append('<option value="' + state.id + '" data-id="' + state.id + '">' + state.name + '</option>');
+                    });
+
+                    // Auto-select the state if already chosen
+                    var selectedState = $("#select-state").attr("data-selected");
+                    if (selectedState) {
+                        $("#select-state").val(selectedState).trigger("change");
+                    }
+                }
+            });
+        }
+
+        $("#select-state").change(function () {
+            var stateID = $(this).val();
+            $("#select-city").html('<option value="">Select City</option>');
+
+            if (stateID) {
+                loadCities(stateID);
+            }
+        });
+
+        function loadCities(stateID) {
+            $.ajax({
+                url: '/Users/GetCities',
+                type: 'GET',
+                data: { stateID: stateID },
+                success: function (data) {
+                    $.each(data, function (i, city) {
+                        $("#select-city").append('<option value="' + city.id + '" data-id="' + city.id + '">' + city.name + '</option>');
+                    });
+
+                    // Auto-select the city if already chosen
+                    var selectedCity = $("#select-city").attr("data-selected");
+                    if (selectedCity) {
+                        $("#select-city").val(selectedCity);
+                    }
+                }   
+            });
+        }
+
+        // Pre-select state and city after country loads
+        $("#stateDropDown").attr("data-selected", "@ViewBag.SelectedStateId");
+        $("#cityDropDown").attr("data-selected", "@ViewBag.SelectedCityId");
+    });
+
+</script>

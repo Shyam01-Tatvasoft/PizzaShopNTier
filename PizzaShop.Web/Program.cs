@@ -18,11 +18,12 @@ builder.Services.AddDbContext<PizzashopContext>(options => options.UseNpgsql(con
 
 builder.Services.AddScoped<IAuthenticationServices, PizzaShop.Service.Implementation.AuthenticationService>();
 builder.Services.AddScoped<IJWTService, JWTService>();
+builder.Services.AddScoped<IAddressService, AddressService>();
+builder.Services.AddScoped<IProfileService, ProfileService>();
+builder.Services.AddScoped<IUsersService, UsersService>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
-builder.Services.AddScoped<IAddressService, AddressService>();
-builder.Services.AddScoped<IProfileService, ProfileService>();
 builder.Services.AddScoped<ICityRepository, CityRepository>();
 builder.Services.AddScoped<ICountryRepository, CountryRepository>();
 builder.Services.AddScoped<IStateRepository, StateRepository>();

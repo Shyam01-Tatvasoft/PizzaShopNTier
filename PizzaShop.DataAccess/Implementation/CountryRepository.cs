@@ -13,6 +13,7 @@ public class CountryRepository: ICountryRepository
     }
     public List<Country> GetAllCountry(){
         var allCountries = _context.Countries.ToList();
+        Console.WriteLine(allCountries.Count());
         return allCountries;
     }
 }

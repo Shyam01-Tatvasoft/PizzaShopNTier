@@ -10,12 +10,15 @@ public class CreateUserViewModel
     public string? Lastname { get; set; }
 
     [Required(ErrorMessage = "User Name is required")]
+    [StringLength(20, MinimumLength=5)]
     public string Username { get; set; } = null!;
 
     [Required(ErrorMessage = "Phone is required")]
+    [RegularExpression("^(?!0+$)(\\+\\d{1,3}[- ]?)?(?!0+$)\\d{10,15}$", ErrorMessage = "Please enter valid phone no.")]
     public string Phone { get; set; } = null!;
 
     [Required(ErrorMessage = "Email is required")]
+    [DataType(DataType.EmailAddress)]
     public string Email { get; set; } = null!;
 
     [Required, DataType(DataType.Password), MinLength(8)]

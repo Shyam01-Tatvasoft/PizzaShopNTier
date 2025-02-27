@@ -26,7 +26,7 @@ public class JWTService : Interfaces.IJWTService
         Console.WriteLine("issuer1" + _config["Jwt:Issuer"]);
         var authClaims = new List<Claim>{
             new Claim(ClaimTypes.Email, email),
-            new Claim(ClaimTypes.Role, userRole.Name),
+            new Claim(ClaimTypes.Role, userRole),
          };
 
         var token = new JwtSecurityToken(

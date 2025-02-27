@@ -15,7 +15,7 @@ public class CityRepository: ICityRepository
     public List<City> GetAllCities()
     {
         var allCities = _context.Cities.ToList();
-        Console.WriteLine("state By country" + allCities.Count());
+        Console.WriteLine("state" + allCities.Count());
         return allCities;
     }
 
@@ -23,7 +23,7 @@ public class CityRepository: ICityRepository
     {
         Console.WriteLine("state id"+id);
         var cities = _context.Cities.Where(c => c.Stateid == id).ToList();
-        Console.WriteLine("state By country" + cities.Count());
+        Console.WriteLine("city By states" + cities.Count());
         return cities;
     }
 }

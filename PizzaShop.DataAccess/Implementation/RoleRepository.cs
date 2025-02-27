@@ -11,9 +11,13 @@ public class RoleRepository: IRoleRepository
     {
         _context = context;
     }
-    public Role GetRoleById(int? id)
+
+    public string GetRoleById(int? id)
     {
+        Console.WriteLine("id");
         var role = _context.Roles.FirstOrDefault(r => r.Id == id);
-        return role;
+        Console.WriteLine("Role" + role.Name);
+        return role.Name;
     }
+
 }

@@ -133,7 +133,7 @@
             <button class="btn btn-primary me-3" type="submit">
               Update
             </button>
-            <button class="btn btn-outline-primary" type="button" id="Cancel" onclick="location.href='@Url.Action("Index", "Home")'">Cancel</button>
+            <button class="btn btn-outline-primary" type="button" id="Cancel" onclick="location.href='@Url.Action("Dashboard", "Dashboard")'">Cancel</button>
           </div>
           <span class="text-success">@ViewData["ProfileSuccessMessage"]</span>
         </div>
@@ -141,6 +141,77 @@
   </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
-  
+    $(document).ready(function () {
+        var selectedCountry = $("#select-country").val();
+        @* if (selectedCountry) {
+            loadStates(selectedCountry);
+        } *@
+
+        $("#select-country").change(function () {
+
+            var countryID = $(this).val();
+            $("#select-state").html('<option value="">Select State</option>');
+            $("#select-city").html('<option value="">Select City</option>');
+
+            if (countryID) {
+                loadStates(countryID);
+            }
+        });
+
+        function loadStates(countryID) {
+            $.ajax({
+                url: '/Users/GetStates',
+                type: 'GET',
+                data: { countryID: countryID },
+                success: function (data) {
+
+                    $.each(data, function (i, state) {
+                        $("#select-state").append('<option value="' + state.id + '" data-id="' + state.id + '">' + state.name + '</option>');
+                    });
+
+                    // Auto-select the state if already chosen
+                    var selectedState = $("#select-state").attr("data-selected");
+                    if (selectedState) {
+                        $("#select-state").val(selectedState).trigger("change");
+                    }
+                }
+            });
+        }
+
+        $("#select-state").change(function () {
+            var stateID = $(this).val();
+            $("#select-city").html('<option value="">Select City</option>');
+
+            if (stateID) {
+                loadCities(stateID);
+            }
+        });
+
+        function loadCities(stateID) {
+            $.ajax({
+                url: '/Users/GetCities',
+                type: 'GET',
+                data: { stateID: stateID },
+                success: function (data) {
+                    $.each(data, function (i, city) {
+                        $("#select-city").append('<option value="' + city.id + '" data-id="' + city.id + '">' + city.name + '</option>');
+                    });
+
+                    // Auto-select the city if already chosen
+                    var selectedCity = $("#select-city").attr("data-selected");
+                    if (selectedCity) {
+                        $("#select-city").val(selectedCity);
+                    }
+                }   
+            });
+        }
+
+        // Pre-select state and city after country loads
+        $("#stateDropDown").attr("data-selected", "@ViewBag.SelectedStateId");
+        $("#cityDropDown").attr("data-selected", "@ViewBag.SelectedCityId");
+    });
+
 </script>

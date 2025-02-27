@@ -6936,11 +6936,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\PizzaShopNTire\\PizzaShop.Web\\PizzaShop.Web.csproj",
+      "projectUniqueName": "d:\\PizzaShopNTire\\PizzaShop.Web\\PizzaShop.Web.csproj",
       "projectName": "PizzaShop.Web",
-      "projectPath": "D:\\PizzaShopNTire\\PizzaShop.Web\\PizzaShop.Web.csproj",
+      "projectPath": "d:\\PizzaShopNTire\\PizzaShop.Web\\PizzaShop.Web.csproj",
       "packagesPath": "C:\\Users\\pci132\\.nuget\\packages\\",
-      "outputPath": "D:\\PizzaShopNTire\\PizzaShop.Web\\obj\\",
+      "outputPath": "d:\\PizzaShopNTire\\PizzaShop.Web\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pci132\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -6955,11 +6955,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\PizzaShopNTire\\PizzaShop.DataAccess\\PizzaShop.DataAccess.csproj": {
-              "projectPath": "D:\\PizzaShopNTire\\PizzaShop.DataAccess\\PizzaShop.DataAccess.csproj"
+            "d:\\PizzaShopNTire\\PizzaShop.DataAccess\\PizzaShop.DataAccess.csproj": {
+              "projectPath": "d:\\PizzaShopNTire\\PizzaShop.DataAccess\\PizzaShop.DataAccess.csproj"
             },
-            "D:\\PizzaShopNTire\\PizzaShop.Service\\PizzaShop.Service.csproj": {
-              "projectPath": "D:\\PizzaShopNTire\\PizzaShop.Service\\PizzaShop.Service.csproj"
+            "d:\\PizzaShopNTire\\PizzaShop.Service\\PizzaShop.Service.csproj": {
+              "projectPath": "d:\\PizzaShopNTire\\PizzaShop.Service\\PizzaShop.Service.csproj"
             }
           }
         }
